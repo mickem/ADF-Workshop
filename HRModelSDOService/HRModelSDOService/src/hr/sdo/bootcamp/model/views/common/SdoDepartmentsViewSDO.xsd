@@ -22,7 +22,7 @@
             <xsd:element name="ManagerId" type="xsd:int" minOccurs="0" nillable="true"/>
             <xsd:element name="TotalSallary" type="xsd:long" minOccurs="0" nillable="true"/>
             <xsd:element name="EmployeeCount" type="xsd:long" minOccurs="0" nillable="true"/>
-            <xsd:element name="MaxSalary" type="xsd:long" minOccurs="0" nillable="true" default="SdoEmployeesView.max(&apos;Salary&apos;)!=null?SdoEmployeesView.max(&apos;Salary&apos;) : 0;"/>
+            <xsd:element name="MaxSalary" type="xsd:long" minOccurs="0" nillable="true"/>
             <xsd:element name="MinSalary" type="xsd:long" minOccurs="0" nillable="true"/>
             <xsd:element name="SdoEmployeesView" type="SdoEmployeesViewSDO" minOccurs="0" maxOccurs="unbounded"/>
         </xsd:sequence>
