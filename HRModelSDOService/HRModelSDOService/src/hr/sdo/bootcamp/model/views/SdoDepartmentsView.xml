@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SdoDepartmentsView"
+  Version="11.1.2.64.36"
+  SelectList="Departments.DEPARTMENT_ID, 
+       Departments.DEPARTMENT_NAME, 
+       Departments.LOCATION_ID, 
+       Departments.MANAGER_ID"
+  FromList="DEPARTMENTS Departments"
+  OrderBy="Departments.DEPARTMENT_NAME"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="hr.sdo.bootcamp.model.views.SdoDepartmentsViewRowImpl"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  SdoGen="true"
+  SdoName="SdoDepartmentsViewSDO"
+  SdoNameSpace="/hr/sdo/bootcamp/model/views/common/">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="hr.sdo.bootcamp.model.views.SdoDepartmentsView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="Departments"
+    Entity="hr.web.bootcamp.model.entities.Departments"/>
+  <ViewAttribute
+    Name="DepartmentId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_ID"/>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentName"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_NAME"/>
+  <ViewAttribute
+    Name="LocationId"
+    PrecisionRule="true"
+    EntityAttrName="LocationId"
+    EntityUsage="Departments"
+    AliasName="LOCATION_ID"/>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="Departments"
+    AliasName="MANAGER_ID"/>
+  <ViewAttribute
+    Name="TotalSallary"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="LONGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[SdoEmployeesView.sum('Salary')!=null?SdoEmployeesView.sum('Salary') : 0;]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployeeCount"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="LONGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[SdoEmployeesView.count('EmployeeId')!=null?SdoEmployeesView.count('EmployeeId') : 0;]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MaxSalary"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="LONGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[SdoEmployeesView.max('Salary')!=null?SdoEmployeesView.max('Salary') : 0;]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MinSalary"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Long"
+    ColumnType="LONGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[SdoEmployeesView.min('Salary')!=null?SdoEmployeesView.min('Salary') : 0;]]></TransientExpression>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="SdoEmployeesView"
+    ViewLink="hr.sdo.bootcamp.model.links.SdoEmpDeptFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="hr.sdo.bootcamp.HRModelSDOServiceBundle"/>
+  </ResourceBundle>
+</ViewObject>

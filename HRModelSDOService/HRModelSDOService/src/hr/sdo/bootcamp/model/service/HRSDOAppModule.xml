@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HRSDOAppModule"
+  Version="11.1.2.64.36"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="4096"/>
+  </DesignTime>
+  <ViewUsage
+    Name="SdoAllDepartments"
+    ViewObjectName="hr.sdo.bootcamp.model.views.SdoDepartmentsView"/>
+  <ViewUsage
+    Name="SdoAllEmpoyees"
+    ViewObjectName="hr.sdo.bootcamp.model.views.SdoEmployeesView"/>
+  <ViewUsage
+    Name="SdoAllJobs"
+    ViewObjectName="hr.sdo.bootcamp.model.views.SdoJobsView"/>
+  <Remote
+    Name="ServiceInterface"
+    ServerClassName="hr.sdo.bootcamp.model.service.server.serviceinterface.HRSDOAppModuleServiceImpl"
+    ServerInterfaceName="hr.sdo.bootcamp.model.service.common.serviceinterface.HRSDOAppModuleService">
+    <DesignTime>
+      <Attr Name="_webServiceName" Value="HRSDOAppModuleService"/>
+      <Attr Name="_targetNameSpace" Value="/hr/sdo/bootcamp/model/service/common/"/>
+    </DesignTime>
+  </Remote>
+  <ServiceViewUsage
+    ViewUsageName="SdoAllDepartments"
+    CanUpdate="true">
+    <DesignTime>
+      <Attr Name="_GetOpName" Value="getSdoDepartmentByKey"/>
+      <Attr Name="_FindOpName" Value="findSdoAllDepartments"/>
+      <Attr Name="_UpdateOpName" Value="updateSdoAllDepartments"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="SdoAllEmpoyees">
+    <DesignTime>
+      <Attr Name="_GetOpName" Value="getSdoEmployeeByKey"/>
+      <Attr Name="_FindOpName" Value="findSdoAllEmpoyees"/>
+    </DesignTime>
+  </ServiceViewUsage>
+  <ServiceViewUsage
+    ViewUsageName="SdoAllJobs">
+    <DesignTime>
+      <Attr Name="_FindOpName" Value="findSdoAllJobs"/>
+    </DesignTime>
+  </ServiceViewUsage>
+</AppModule>

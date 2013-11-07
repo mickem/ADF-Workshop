@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HRModelSDOService"
+  Version="11.1.2.64.36"
+  SeparateXMLFiles="true"
+  PackageName="hr.sdo.bootcamp">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../../../HRModelSDOService.jpr"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+    <Attr Name="_NamedConnection" Value="hr"/>
+    <Attr Name="_appModuleNames0" Value="hr.sdo.bootcamp.model.service.HRSDOAppModule"/>
+  </DesignTime>
+  <Containee
+    Name="links"
+    PackageName="hr.sdo.bootcamp.model.links"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="service"
+    PackageName="hr.sdo.bootcamp.model.service"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="views"
+    PackageName="hr.sdo.bootcamp.model.views"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <AppContainee
+    Name="Model"
+    FullName="hr.web.bootcamp.model.Model"
+    ObjectType="JboProject">
+    <DesignTime>
+      <Attr Name="_SourceName" Value="HRWebApp_adflib.jar"/>
+    </DesignTime>
+  </AppContainee>
+</JboProject>

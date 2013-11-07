@@ -3,3 +3,5 @@
 **/classes
 **/temp
 **/*.adfc_diagram
+**/deploy/*.jar
+**/deploy/*.ear

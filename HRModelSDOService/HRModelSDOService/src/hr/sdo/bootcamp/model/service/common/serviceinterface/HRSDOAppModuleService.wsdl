@@ -1,0 +1,173 @@
+<wsdl:definitions
+     name="HRSDOAppModuleService"
+     targetNamespace="/hr/sdo/bootcamp/model/service/common/"
+     xmlns:errors="http://xmlns.oracle.com/adf/svc/errors/"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="/hr/sdo/bootcamp/model/service/common/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:types="/hr/sdo/bootcamp/model/service/common/types/"
+    >
+    <wsdl:import namespace="http://xmlns.oracle.com/adf/svc/errors/" location="classpath:/META-INF/wsdl/ServiceException.wsdl"/>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="/hr/sdo/bootcamp/model/service/common/types/" schemaLocation="HRSDOAppModuleService.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="HRSDOAppModuleService_updateSdoAllDepartments">
+        <wsdl:part name="parameters" element="types:updateSdoAllDepartments"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_updateSdoAllDepartmentsResponse">
+        <wsdl:part name="parameters" element="types:updateSdoAllDepartmentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_findSdoAllDepartments">
+        <wsdl:part name="parameters" element="types:findSdoAllDepartments"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_findSdoAllDepartmentsResponse">
+        <wsdl:part name="parameters" element="types:findSdoAllDepartmentsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_findSdoAllEmpoyees">
+        <wsdl:part name="parameters" element="types:findSdoAllEmpoyees"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_findSdoAllEmpoyeesResponse">
+        <wsdl:part name="parameters" element="types:findSdoAllEmpoyeesResponse"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_findSdoAllJobs">
+        <wsdl:part name="parameters" element="types:findSdoAllJobs"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_findSdoAllJobsResponse">
+        <wsdl:part name="parameters" element="types:findSdoAllJobsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_getSdoDepartmentByKey">
+        <wsdl:part name="parameters" element="types:getSdoDepartmentByKey"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_getSdoDepartmentByKeyResponse">
+        <wsdl:part name="parameters" element="types:getSdoDepartmentByKeyResponse"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_getSdoEmployeeByKey">
+        <wsdl:part name="parameters" element="types:getSdoEmployeeByKey"/>
+    </wsdl:message>
+    <wsdl:message name="HRSDOAppModuleService_getSdoEmployeeByKeyResponse">
+        <wsdl:part name="parameters" element="types:getSdoEmployeeByKeyResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="HRSDOAppModuleService">
+        <wsdl:documentation>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="SdoAllDepartments" xmlns:ns0="/hr/sdo/bootcamp/model/views/common/"
+                 SDOName="ns0:SdoDepartmentsViewSDO" UpdateOpName="updateSdoAllDepartments"
+                 GetOpName="getSdoDepartmentByKey" FindOpName="findSdoAllDepartments"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="SdoAllEmpoyees" xmlns:ns0="/hr/sdo/bootcamp/model/views/common/"
+                 SDOName="ns0:SdoEmployeesViewSDO" GetOpName="getSdoEmployeeByKey" FindOpName="findSdoAllEmpoyees"/>
+            <ViewInstance xmlns="http://xmlns.oracle.com/adf/svc/metadata/" Name="SdoAllJobs" xmlns:ns0="/hr/sdo/bootcamp/model/views/common/"
+                 SDOName="ns0:SdoJobsViewSDO" FindOpName="findSdoAllJobs"/>
+        </wsdl:documentation>
+        <wsdl:operation name="updateSdoAllDepartments">
+            <wsdl:input message="tns:HRSDOAppModuleService_updateSdoAllDepartments"/>
+            <wsdl:output message="tns:HRSDOAppModuleService_updateSdoAllDepartmentsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findSdoAllDepartments">
+            <wsdl:input message="tns:HRSDOAppModuleService_findSdoAllDepartments"/>
+            <wsdl:output message="tns:HRSDOAppModuleService_findSdoAllDepartmentsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findSdoAllEmpoyees">
+            <wsdl:input message="tns:HRSDOAppModuleService_findSdoAllEmpoyees"/>
+            <wsdl:output message="tns:HRSDOAppModuleService_findSdoAllEmpoyeesResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="findSdoAllJobs">
+            <wsdl:input message="tns:HRSDOAppModuleService_findSdoAllJobs"/>
+            <wsdl:output message="tns:HRSDOAppModuleService_findSdoAllJobsResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getSdoDepartmentByKey">
+            <wsdl:input message="tns:HRSDOAppModuleService_getSdoDepartmentByKey"/>
+            <wsdl:output message="tns:HRSDOAppModuleService_getSdoDepartmentByKeyResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getSdoEmployeeByKey">
+            <wsdl:input message="tns:HRSDOAppModuleService_getSdoEmployeeByKey"/>
+            <wsdl:output message="tns:HRSDOAppModuleService_getSdoEmployeeByKeyResponse"/>
+            <wsdl:fault name="ServiceException" message="errors:ServiceException"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="HRSDOAppModuleServiceSoapHttp" type="tns:HRSDOAppModuleService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="updateSdoAllDepartments">
+            <soap:operation soapAction="/hr/sdo/bootcamp/model/service/common/updateSdoAllDepartments"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findSdoAllDepartments">
+            <soap:operation soapAction="/hr/sdo/bootcamp/model/service/common/findSdoAllDepartments"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findSdoAllEmpoyees">
+            <soap:operation soapAction="/hr/sdo/bootcamp/model/service/common/findSdoAllEmpoyees"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="findSdoAllJobs">
+            <soap:operation soapAction="/hr/sdo/bootcamp/model/service/common/findSdoAllJobs"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getSdoDepartmentByKey">
+            <soap:operation soapAction="/hr/sdo/bootcamp/model/service/common/getSdoDepartmentByKey"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getSdoEmployeeByKey">
+            <soap:operation soapAction="/hr/sdo/bootcamp/model/service/common/getSdoEmployeeByKey"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="ServiceException">
+                <soap:fault name="ServiceException" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HRSDOAppModuleService">
+        <wsdl:port name="HRSDOAppModuleServiceSoapHttpPort" binding="tns:HRSDOAppModuleServiceSoapHttp">
+            <soap:address location="http://localhost:7101/HRSDOService/HRSDOAppModuleService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

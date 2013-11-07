@@ -1,0 +1,95 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="/hr/sdo/bootcamp/model/service/common/types/"
+     xmlns:tns="/hr/sdo/bootcamp/model/service/common/types/" xmlns:ns0="/hr/sdo/bootcamp/model/views/common/"
+     xmlns:ns1="http://xmlns.oracle.com/adf/svc/types/">
+    <import namespace="/hr/sdo/bootcamp/model/views/common/" schemaLocation="../../../views/common/SdoEmployeesViewSDO.xsd"/>
+    <import namespace="http://xmlns.oracle.com/adf/svc/types/" schemaLocation="classpath:/META-INF/wsdl/BC4JService.xsd"/>
+    <import namespace="/hr/sdo/bootcamp/model/views/common/" schemaLocation="../../../views/common/SdoDepartmentsViewSDO.xsd"/>
+    <import namespace="/hr/sdo/bootcamp/model/views/common/" schemaLocation="../../../views/common/SdoJobsViewSDO.xsd"/>
+    <element name="updateSdoAllDepartments">
+        <complexType>
+            <sequence>
+                <element name="sdoAllDepartments" type="ns0:SdoDepartmentsViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="updateSdoAllDepartmentsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:SdoDepartmentsViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findSdoAllDepartments">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findSdoAllDepartmentsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:SdoDepartmentsViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findSdoAllEmpoyees">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findSdoAllEmpoyeesResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:SdoEmployeesViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findSdoAllJobs">
+        <complexType>
+            <sequence>
+                <element name="findCriteria" type="ns1:FindCriteria"/>
+                <element name="findControl" type="ns1:FindControl"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="findSdoAllJobsResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:SdoJobsViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getSdoDepartmentByKey">
+        <complexType>
+            <sequence>
+                <element name="departmentId" type="int"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getSdoDepartmentByKeyResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:SdoDepartmentsViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getSdoEmployeeByKey">
+        <complexType>
+            <sequence>
+                <element name="employeeId" type="int"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getSdoEmployeeByKeyResponse">
+        <complexType>
+            <sequence>
+                <element name="result" type="ns0:SdoEmployeesViewSDO"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

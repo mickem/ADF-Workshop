@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SdoEmployeesView"
+  Version="11.1.2.64.36"
+  SelectList="Employees.COMMISSION_PCT, 
+       Employees.DEPARTMENT_ID, 
+       Employees.EMAIL, 
+       Employees.EMPLOYEE_ID, 
+       Employees.FIRST_NAME, 
+       Employees.HIRE_DATE, 
+       Employees.JOB_ID, 
+       Employees.LAST_NAME, 
+       Employees.MANAGER_ID, 
+       Employees.PHONE_NUMBER, 
+       Employees.SALARY, 
+       Departments.DEPARTMENT_NAME, 
+       Departments.DEPARTMENT_ID AS DEPARTMENT_ID1, 
+       Jobs.JOB_TITLE, 
+       Jobs.JOB_ID AS JOB_ID1, 
+       Managers.FIRST_NAME AS FIRST_NAME1, 
+       Managers.LAST_NAME AS LAST_NAME1, 
+       Managers.EMAIL AS EMAIL1, 
+       Managers.EMPLOYEE_ID AS EMPLOYEE_ID1"
+  FromList="EMPLOYEES Employees, DEPARTMENTS Departments, JOBS Jobs, EMPLOYEES Managers"
+  Where="((Employees.DEPARTMENT_ID = Departments.DEPARTMENT_ID) AND (Employees.JOB_ID = Jobs.JOB_ID)) AND (Employees.MANAGER_ID = Managers.EMPLOYEE_ID(+))"
+  OrderBy="Employees.LAST_NAME"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="hr.sdo.bootcamp.model.views.SdoEmployeesViewRowImpl"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  SdoGen="true"
+  SdoName="SdoEmployeesViewSDO"
+  SdoNameSpace="/hr/sdo/bootcamp/model/views/common/">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="hr.sdo.bootcamp.model.views.SdoEmployeesView_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <EntityUsage
+    Name="Employees"
+    Entity="hr.web.bootcamp.model.entities.Employees"/>
+  <EntityUsage
+    Name="Departments"
+    Entity="hr.web.bootcamp.model.entities.Departments"
+    Association="hr.web.bootcamp.model.entities.EmpDeptFkAssoc"
+    AssociationEnd="hr.web.bootcamp.model.entities.EmpDeptFkAssoc.Departments1"
+    SourceUsage="hr.sdo.bootcamp.model.views.SdoEmployeesView.Employees"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="hr.web.bootcamp.model.entities.Employees.DepartmentId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="hr.web.bootcamp.model.entities.Departments.DepartmentId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Jobs"
+    Entity="hr.web.bootcamp.model.entities.Jobs"
+    Association="hr.web.bootcamp.model.entities.EmpJobFkAssoc"
+    AssociationEnd="hr.web.bootcamp.model.entities.EmpJobFkAssoc.Jobs"
+    SourceUsage="hr.sdo.bootcamp.model.views.SdoEmployeesView.Employees"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="hr.web.bootcamp.model.entities.Employees.JobId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="hr.web.bootcamp.model.entities.Jobs.JobId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <EntityUsage
+    Name="Managers"
+    Entity="hr.web.bootcamp.model.entities.Employees"
+    Association="hr.web.bootcamp.model.entities.EmpManagerFkAssoc"
+    AssociationEnd="hr.web.bootcamp.model.entities.EmpManagerFkAssoc.ManagerIdEmployees"
+    SourceUsage="hr.sdo.bootcamp.model.views.SdoEmployeesView.Employees"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="LEFT OUTER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="hr.web.bootcamp.model.entities.Employees.ManagerId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="hr.web.bootcamp.model.entities.Employees.EmployeeId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="CommissionPct"
+    PrecisionRule="true"
+    EntityAttrName="CommissionPct"
+    EntityUsage="Employees"
+    AliasName="COMMISSION_PCT"/>
+  <ViewAttribute
+    Name="DepartmentId"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Employees"
+    AliasName="DEPARTMENT_ID"/>
+  <ViewAttribute
+    Name="Email"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Email"
+    EntityUsage="Employees"
+    AliasName="EMAIL"/>
+  <ViewAttribute
+    Name="EmployeeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="Employees"
+    AliasName="EMPLOYEE_ID"/>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Employees"
+    AliasName="FIRST_NAME"/>
+  <ViewAttribute
+    Name="HireDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="HireDate"
+    EntityUsage="Employees"
+    AliasName="HIRE_DATE"/>
+  <ViewAttribute
+    Name="JobId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="Employees"
+    AliasName="JOB_ID"/>
+  <ViewAttribute
+    Name="LastName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="Employees"
+    AliasName="LAST_NAME"/>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="Employees"
+    AliasName="MANAGER_ID"/>
+  <ViewAttribute
+    Name="PhoneNumber"
+    PrecisionRule="true"
+    EntityAttrName="PhoneNumber"
+    EntityUsage="Employees"
+    AliasName="PHONE_NUMBER"/>
+  <ViewAttribute
+    Name="Salary"
+    PrecisionRule="true"
+    EntityAttrName="Salary"
+    EntityUsage="Employees"
+    AliasName="SALARY"/>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentName"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_NAME"/>
+  <ViewAttribute
+    Name="DepartmentId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_ID1"/>
+  <ViewAttribute
+    Name="JobTitle"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JobTitle"
+    EntityUsage="Jobs"
+    AliasName="JOB_TITLE"/>
+  <ViewAttribute
+    Name="JobId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="Jobs"
+    AliasName="JOB_ID1"/>
+  <ViewAttribute
+    Name="FirstName1"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Managers"
+    AliasName="FIRST_NAME1"/>
+  <ViewAttribute
+    Name="LastName1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="Managers"
+    AliasName="LAST_NAME1"/>
+  <ViewAttribute
+    Name="Email1"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Email"
+    EntityUsage="Managers"
+    AliasName="EMAIL1"/>
+  <ViewAttribute
+    Name="EmployeeId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="Managers"
+    AliasName="EMPLOYEE_ID1"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="EmployeeId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="hr.sdo.bootcamp.HRModelSDOServiceBundle"/>
+  </ResourceBundle>
+</ViewObject>

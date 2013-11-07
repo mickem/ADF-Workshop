@@ -1,0 +1,31 @@
+<xsd:schema xmlns:sdoJava="commonj.sdo/java" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:sdoXML="commonj.sdo/xml"
+     targetNamespace="/hr/sdo/bootcamp/model/views/common/" xmlns="/hr/sdo/bootcamp/model/views/common/"
+     elementFormDefault="qualified" sdoJava:package="hr.sdo.bootcamp.model.views.common">
+    <xsd:annotation>
+        <xsd:documentation>Sdo Departments View</xsd:documentation>
+    </xsd:annotation>
+    <xsd:import schemaLocation="classpath:/xml/sdoJava.xsd" namespace="commonj.sdo/java"/>
+    <xsd:import schemaLocation="classpath:/xml/sdoXML.xsd" namespace="commonj.sdo/xml"/>
+    <xsd:include schemaLocation="SdoEmployeesViewSDO.xsd"/>
+    <xsd:complexType name="SdoDepartmentsViewSDO">
+        <xsd:annotation>
+            <xsd:appinfo source="http://xmlns.oracle.com/adf/svc/metadata/">
+                <key xmlns="http://xmlns.oracle.com/adf/svc/metadata/">
+                    <attribute>DepartmentId</attribute>
+                </key>
+            </xsd:appinfo>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="DepartmentId" type="xsd:int" minOccurs="0" sdoXML:dataType="sdoJava:IntObject"/>
+            <xsd:element name="DepartmentName" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="LocationId" type="xsd:int" minOccurs="0" nillable="true"/>
+            <xsd:element name="ManagerId" type="xsd:int" minOccurs="0" nillable="true"/>
+            <xsd:element name="TotalSallary" type="xsd:long" minOccurs="0" nillable="true"/>
+            <xsd:element name="EmployeeCount" type="xsd:long" minOccurs="0" nillable="true"/>
+            <xsd:element name="MaxSalary" type="xsd:long" minOccurs="0" nillable="true" default="SdoEmployeesView.max(&apos;Salary&apos;)!=null?SdoEmployeesView.max(&apos;Salary&apos;) : 0;"/>
+            <xsd:element name="MinSalary" type="xsd:long" minOccurs="0" nillable="true"/>
+            <xsd:element name="SdoEmployeesView" type="SdoEmployeesViewSDO" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="sdoDepartmentsViewSDO" type="SdoDepartmentsViewSDO"/>
+</xsd:schema>
