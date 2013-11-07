@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="11.1.2.64.36" id="DataBindings"
+             SeparateXMLFiles="false" Package="hr.web.bootcamp.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/DeptEmpPage.jsf" usageId="hr_web_bootcamp_view_DeptEmpPagePageDef"/>
+    <page path="/WEB-INF/create-edit-emp-btf.xml#create-edit-emp-btf@CreateInsert"
+          usageId="hr_web_bootcamp_view_create_edit_emp_btf_create_edit_emp_btf_CreateInsertPageDef"/>
+    <page path="/EmpDetails.jsf" usageId="hr_web_bootcamp_view_EmpDetailsPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="hr_web_bootcamp_view_DeptEmpPagePageDef" path="hr.web.bootcamp.view.pageDefs.DeptEmpPagePageDef"/>
+    <page id="hr_web_bootcamp_view_create_edit_emp_btf_create_edit_emp_btf_CreateInsertPageDef"
+          path="hr.web.bootcamp.view.pageDefs.create_edit_emp_btf_create_edit_emp_btf_CreateInsertPageDef"/>
+    <page id="hr_web_bootcamp_view_EmpDetailsPageDef" path="hr.web.bootcamp.view.pageDefs.EmpDetailsPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="HRWebAppModuleDataControl" Package="hr.web.bootcamp.model.service"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="HRWebAppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

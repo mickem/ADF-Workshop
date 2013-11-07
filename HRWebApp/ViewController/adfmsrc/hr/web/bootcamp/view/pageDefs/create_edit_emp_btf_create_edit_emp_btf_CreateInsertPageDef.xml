@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.2.64.36"
+                id="create_edit_emp_btf_create_edit_emp_btf_CreateInsertPageDef"
+                Package="hr.web.bootcamp.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="EmployeesInDepartment" RangeSize="25" DataControl="HRWebAppModuleDataControl"
+              id="EmployeesInDepartmentIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="EmployeesInDepartmentIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

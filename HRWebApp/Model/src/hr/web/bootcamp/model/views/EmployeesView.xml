@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="EmployeesView"
+  Version="11.1.2.64.36"
+  SelectList="Employees.EMPLOYEE_ID, 
+       Employees.FIRST_NAME, 
+       Employees.LAST_NAME, 
+       Employees.EMAIL, 
+       Employees.PHONE_NUMBER, 
+       Employees.HIRE_DATE, 
+       Employees.JOB_ID, 
+       Employees.SALARY, 
+       Employees.COMMISSION_PCT, 
+       Employees.MANAGER_ID, 
+       Employees.DEPARTMENT_ID, 
+       Departments.DEPARTMENT_NAME, 
+       Departments.DEPARTMENT_ID AS DEPARTMENT_ID1"
+  FromList="EMPLOYEES Employees, DEPARTMENTS Departments"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  Where="Employees.DEPARTMENT_ID = Departments.DEPARTMENT_ID">
+  <ViewAccessor
+    Name="JobsView1"
+    ViewObjectName="hr.web.bootcamp.model.views.JobsView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_JobId"
+    ListVOName="JobsView1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="JobId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="JobTitle"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="hide"/>
+  </ListBinding>
+  <EntityUsage
+    Name="Employees"
+    Entity="hr.web.bootcamp.model.entities.Employees"/>
+  <EntityUsage
+    Name="Departments"
+    Entity="hr.web.bootcamp.model.entities.Departments"
+    Association="hr.web.bootcamp.model.entities.EmpDeptFkAssoc"
+    AssociationEnd="hr.web.bootcamp.model.entities.EmpDeptFkAssoc.Departments1"
+    SourceUsage="hr.web.bootcamp.model.views.EmployeesView.Employees"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="hr.web.bootcamp.model.entities.Employees.DepartmentId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="hr.web.bootcamp.model.entities.Departments.DepartmentId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="EmployeeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EmployeeId"
+    EntityUsage="Employees"
+    AliasName="EMPLOYEE_ID"/>
+  <ViewAttribute
+    Name="FirstName"
+    PrecisionRule="true"
+    EntityAttrName="FirstName"
+    EntityUsage="Employees"
+    AliasName="FIRST_NAME"/>
+  <ViewAttribute
+    Name="LastName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastName"
+    EntityUsage="Employees"
+    AliasName="LAST_NAME"/>
+  <ViewAttribute
+    Name="Email"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Email"
+    EntityUsage="Employees"
+    AliasName="EMAIL"/>
+  <ViewAttribute
+    Name="PhoneNumber"
+    PrecisionRule="true"
+    EntityAttrName="PhoneNumber"
+    EntityUsage="Employees"
+    AliasName="PHONE_NUMBER"/>
+  <ViewAttribute
+    Name="HireDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="HireDate"
+    EntityUsage="Employees"
+    AliasName="HIRE_DATE"/>
+  <ViewAttribute
+    Name="JobId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JobId"
+    EntityUsage="Employees"
+    AliasName="JOB_ID"
+    LOVName="LOV_JobId">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Salary"
+    PrecisionRule="true"
+    EntityAttrName="Salary"
+    EntityUsage="Employees"
+    AliasName="SALARY"/>
+  <ViewAttribute
+    Name="CommissionPct"
+    PrecisionRule="true"
+    EntityAttrName="CommissionPct"
+    EntityUsage="Employees"
+    AliasName="COMMISSION_PCT"/>
+  <ViewAttribute
+    Name="ManagerId"
+    PrecisionRule="true"
+    EntityAttrName="ManagerId"
+    EntityUsage="Employees"
+    AliasName="MANAGER_ID"/>
+  <ViewAttribute
+    Name="DepartmentId"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Employees"
+    AliasName="DEPARTMENT_ID"/>
+  <ViewAttribute
+    Name="DepartmentName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentName"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_NAME"/>
+  <ViewAttribute
+    Name="DepartmentId1"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DepartmentId"
+    EntityUsage="Departments"
+    AliasName="DEPARTMENT_ID1"/>
+  <ViewAttribute
+    Name="AnualSalary"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[Salary == null?0:Salary*12]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Gravatar"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA["http://www.gravatar.com/avatar/" + new BigInteger(1, java.security.MessageDigest.getInstance("MD5").digest(Email.getBytes("CP1252"))).toString(16)]]></TransientExpression>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="EmployeeId"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="EmployeesView"
+    ViewLink="hr.web.bootcamp.model.views.EmpManagerFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="DepartmentsView"
+    ViewLink="hr.web.bootcamp.model.views.DeptMgrFkLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="DeptEmpPage">
+    <page>/DeptEmpPage.jsf</page>
+  </view>
+  <task-flow-call id="create-edit-emp-btf">
+    <task-flow-reference>
+      <document>/WEB-INF/create-edit-emp-btf.xml</document>
+      <id>create-edit-emp-btf</id>
+    </task-flow-reference>
+    <input-parameter id="__5">
+      <name>actionParam</name>
+      <value>#{pageFlowScope.userAction}</value>
+    </input-parameter>
+  </task-flow-call>
+  <control-flow-rule id="__1">
+    <from-activity-id>DeptEmpPage</from-activity-id>
+    <control-flow-case id="__2">
+      <from-outcome>createOrEdit</from-outcome>
+      <to-activity-id>create-edit-emp-btf</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__3">
+    <from-activity-id>create-edit-emp-btf</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>return</from-outcome>
+      <to-activity-id>DeptEmpPage</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+</adfc-config>
